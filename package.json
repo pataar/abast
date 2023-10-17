@@ -1,0 +1,54 @@
+{
+  "name": "abast",
+  "private": true,
+  "description": "Bot for several things",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "start": "bun src/index.ts",
+    "lint": "eslint src/**/*.ts --fix",
+    "format": "prettier .",
+    "compile": "bun build src/index.ts --compile --outfile dist/abast"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "eslint --fix"
+    ],
+    "*.{json,yml,md}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.2",
+    "@types/lodash.merge": "^4.6.7",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "bun-types": "^1.0.3",
+    "conventional-changelog-conventionalcommits": "^7.0.2",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@commander-js/extra-typings": "^11.1.0",
+    "@gitbeaker/core": "^39.15.0",
+    "@gitbeaker/rest": "^39.15.0",
+    "fs-extra": "^11.1.1",
+    "json2toml": "^6.0.0",
+    "lodash.merge": "^4.6.2",
+    "openai": "^4.12.3",
+    "pino": "^8.16.0",
+    "pino-pretty": "^10.2.3",
+    "simple-git": "^3.19.1",
+    "toml": "^3.0.0",
+    "zod": "^3.22.4"
+  }
+}

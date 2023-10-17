@@ -1,0 +1,30 @@
+{
+	"compilerOptions": {
+		"outDir": "./build",
+		"allowSyntheticDefaultImports": true,
+		"declaration": false,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		// enable latest features
+		"lib": ["esnext"],
+		"module": "esnext",
+		"target": "esnext",
+
+
+		"moduleResolution": "bundler",
+		"noEmit": true,
+		"allowImportingTsExtensions": true,
+		"moduleDetection": "force",
+
+		"strict": true,
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+
+		"downlevelIteration": true,
+		"types": ["bun-types"]
+	},
+	"include": ["src/**/*"]
+}
