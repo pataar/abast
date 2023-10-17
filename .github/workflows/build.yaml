@@ -1,4 +1,4 @@
-name: Build
+name: Build and optionally publish a multi-platform Docker image
 
 # Controls when the workflow will run
 on:
@@ -13,11 +13,6 @@ on:
     branches:
       - 'main'
       - 'dev'
-
-# permissions are needed if pushing to ghcr.io
-permissions:
-  packages: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -45,13 +40,12 @@ jobs:
             ghrc.io/pataar/abast
           # Docker tags based on the following events/attributes
           tags: |
-            type=schedule
+
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-            type=sha
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
