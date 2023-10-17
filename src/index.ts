@@ -4,11 +4,11 @@ import OpenAI from "openai";
 
 import { IssueCommand } from "./commands/issue";
 import type { AbastCommand } from "./commands/AbastCommand.ts";
-import type { ConfigValues } from "./config.ts";
-import { Config } from "./config.ts";
+import { Config } from "./config/config.ts";
 import { version } from "../package.json";
 import { ConfigCommand } from "./commands/config";
 import { Logger } from "./logger.ts";
+import type { ConfigValues } from "./config/schema.ts";
 
 const logger = new Logger();
 
@@ -22,7 +22,7 @@ export class Abast {
 	) {
 		this.config = configInstance.values;
 		this.openAI = new OpenAI({
-			apiKey: this.config.openai.key,
+			apiKey: this.config.openai?.key || "",
 		});
 	}
 

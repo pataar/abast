@@ -4,3 +4,20 @@ Automation of Boring And Slow Tasks (ABAST) is a collection of commands to autom
 It's mainly built for myself to automate tasks I do often, but I hope it can be useful for others too.
 
 It uses OpenAI in certain commands to do lots of boring typing and filling repetitive forms.
+
+## Installation
+
+```bash
+//todo
+```
+
+## Setting up
+
+```bash
+abast config set openai.key <your-openai-key>
+```
+
+## Usage
+```bash
+abast issue create
+```

@@ -1,7 +1,7 @@
 import { Command } from "@commander-js/extra-typings";
 
 import { AbastCommand } from "../AbastCommand.ts";
-import { Config } from "../../config.ts";
+import { Config } from "../../config/config.ts";
 
 export class ConfigCommand extends AbastCommand {
 	name = "config";
@@ -20,7 +20,7 @@ export class ConfigCommand extends AbastCommand {
 							[lastKey]: value,
 						});
 						await this.abast.configInstance.set(newValues);
-						this.abast.logger.info(`Set ${key} to ${value}`);
+						this.abast.logger.info(`Wrote ${key} to '${await Config.file()}'`);
 					}),
 			)
 			.addCommand(

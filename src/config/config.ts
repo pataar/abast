@@ -2,23 +2,14 @@ import path from "path";
 import { homedir } from "os";
 
 import merge from "lodash.merge";
-import { z } from "zod";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import json2toml from "json2toml";
 import { ensureDir } from "fs-extra";
 
-import type { Logger } from "./logger.ts";
-
-export const configSchema = z.object({
-	openai: z
-		.object({
-			key: z.string().default(""),
-		})
-		.default({}),
-});
-
-export type ConfigValues = z.infer<typeof configSchema>;
+import type { Logger } from "../logger.ts";
+import type { ConfigValues } from "./schema.ts";
+import { configSchema, defaults } from "./schema.ts";
 
 export class Config {
 	public static fileLocations = [`${homedir()}/.config/abast/abast.toml`];
@@ -44,7 +35,7 @@ export class Config {
 		if (configFile) {
 			const config = await import(configFile);
 
-			const parsedConfig = await configSchema.safeParseAsync(config);
+			const parsedConfig = await configSchema.safeParseAsync(config.default);
 
 			if (!parsedConfig.success) {
 				logger.error(`Failed to parse config: ${parsedConfig.error}`);
@@ -56,14 +47,17 @@ export class Config {
 			return new Config(parsedConfig.data);
 		}
 
-		const configInstance = new Config(configSchema.parse({}));
-		await configInstance.write();
-
-		return configInstance;
+		return new Config(defaults);
 	}
 
 	set(newValues: Partial<ConfigValues>) {
-		this.values = configSchema.parse(merge(this.values, newValues));
+		const result = configSchema.safeParse(merge(this.values, newValues));
+		if (!result.success) {
+			console.error(`Failed to parse config: ${result.error.message}`);
+			process.exit(1);
+		} else {
+			this.values = result.data;
+		}
 		return this.write();
 	}
 }
