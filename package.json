@@ -7,7 +7,7 @@
     "start": "bun src/index.ts",
     "lint": "eslint src/**/*.ts --fix",
     "format": "prettier .",
-    "compile": "bun build src/index.ts --compile --outfile dist/abast"
+    "compile": "bun build src/index.ts --compile --outfile bin/abast"
   },
   "lint-staged": {
     "src/**/*.ts": [
@@ -42,8 +42,6 @@
     "json2toml": "^6.0.0",
     "lodash.merge": "^4.6.2",
     "openai": "^4.12.3",
-    "pino": "^8.16.0",
-    "pino-pretty": "^10.2.3",
     "simple-git": "^3.19.1",
     "toml": "^3.0.0",
     "zod": "^3.22.4"

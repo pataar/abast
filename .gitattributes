@@ -21,3 +21,5 @@ artisan diff=php
 
 *.svg binary
 
+# Bun
+*.lockb binary diff=lockb

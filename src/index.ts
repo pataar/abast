@@ -1,8 +1,6 @@
 import { Command } from "@commander-js/extra-typings";
 // eslint-disable-next-line import/no-named-as-default
 import OpenAI from "openai";
-import type { Logger } from "pino";
-import { pino } from "pino";
 
 import { IssueCommand } from "./commands/issue";
 import type { AbastCommand } from "./commands/AbastCommand.ts";
@@ -10,21 +8,9 @@ import type { ConfigValues } from "./config.ts";
 import { Config } from "./config.ts";
 import version from "../version.txt";
 import { ConfigCommand } from "./commands/config";
+import { Logger } from "./logger.ts";
 
-const logger = pino({
-	transport: {
-		targets: [
-			{
-				target: "pino-pretty",
-				level: "info",
-				options: {
-					colorize: process.stdout.isTTY,
-					ignore: process.stdout.isTTY ? "pid,hostname" : "pid,hostname,level,time",
-				},
-			},
-		],
-	},
-});
+const logger = new Logger();
 
 export class Abast {
 	public openAI: OpenAI;

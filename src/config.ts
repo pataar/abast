@@ -7,7 +7,8 @@ import { z } from "zod";
 // @ts-ignore
 import json2toml from "json2toml";
 import { ensureDir } from "fs-extra";
-import type { Logger } from "pino";
+
+import type { Logger } from "./logger.ts";
 
 export const configSchema = z.object({
 	openai: z
