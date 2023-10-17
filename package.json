@@ -2,9 +2,6 @@
   "name": "abast",
   "private": true,
   "description": "Bot for several things",
-  "engines": {
-    "node": ">=20.0.0"
-  },
   "scripts": {
     "dev": "bun --watch src/index.ts",
     "start": "bun src/index.ts",
