@@ -16,8 +16,8 @@ COPY src src
 
 RUN bun run compile
 
-FROM scratch as runner
+FROM bitnami/minideb:bullseye as runner
 
-COPY --from=builder /app/bin /bin
+COPY --from=builder /app/bin/ /bin/
 
-CMD ["/app/bin/abast"]
+ENTRYPOINT ["/bin/abast"]
