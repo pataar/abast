@@ -6,3 +6,4 @@
 /repositories/
 .pnp.*
 /bin/
+dist/
