@@ -6,7 +6,7 @@ import { IssueCommand } from "./commands/issue";
 import type { AbastCommand } from "./commands/AbastCommand.ts";
 import type { ConfigValues } from "./config.ts";
 import { Config } from "./config.ts";
-import version from "../version.txt";
+import { version } from "../package.json";
 import { ConfigCommand } from "./commands/config";
 import { Logger } from "./logger.ts";
 

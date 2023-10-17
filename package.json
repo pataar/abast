@@ -1,5 +1,6 @@
 {
   "name": "abast",
+  "version": "0.0.1",
   "private": true,
   "description": "Bot for several things",
   "scripts": {
