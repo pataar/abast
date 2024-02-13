@@ -26,7 +26,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@commander-js/extra-typings": "^11.1.0",
+    "@commander-js/extra-typings": "^12.0.0",
     "@gitbeaker/core": "^39.15.0",
     "@gitbeaker/rest": "^39.15.0",
     "fs-extra": "^11.1.1",
