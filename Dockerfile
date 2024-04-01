@@ -1,4 +1,4 @@
-FROM oven/bun:1.0 as builder
+FROM oven/bun:1.1 as builder
 
 ENV TZ Europe/Amsterdam
 
